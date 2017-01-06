@@ -486,7 +486,6 @@ def e_gen():
 
 if __name__ == '__main__':
     # tests / examples
-
     pi = CFrac(math.pi)
     e = CFrac(e_gen())
     print('pi     = {}'.format(pi))

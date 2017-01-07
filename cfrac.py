@@ -176,8 +176,8 @@ class CFrac(numbers.Real):
     def __eq__(self, other):
         if isinstance(other, CFrac):
             return all(x == y for x, y in zip(self[:self.DEPTH], other[:self.DEPTH]))
-        elif isinstance(object, numbers.Real):
-            return abs(self - other) < 10**(-self.DEPTH)
+        elif isinstance(other, numbers.Real):
+            return abs(self - other) <= 10**(-self.DEPTH)
 
         else:
             return NotImplemented

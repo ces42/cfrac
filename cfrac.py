@@ -137,7 +137,7 @@ class CFrac(numbers.Real):
         return A / B
 
     def __bool__(self):
-        return bool(self[0] or self.longer_than_eq(2))b
+        return bool(self[0] or self.longer_than_eq(2))
 
     def __abs__(self):
         if self < 0: return -self

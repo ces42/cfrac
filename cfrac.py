@@ -51,11 +51,12 @@ class CFrac(numbers.Real):
         """
         :param x: a number or an iterable yielding the CF terms
         """
-        self._cached = -1
+        self._cached = 0
         self._terms = []
 
         if isinstance(x, numbers.Real):
             self._gen = euclid_factors(x, 1)
+            self._more_terms()
 
         elif isinstance(x, collections.Iterable):
             self._gen = iter(x)

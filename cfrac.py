@@ -134,12 +134,11 @@ class CFrac(numbers.Real):
         return A / B
 
     def __bool__(self):
-        return any(x != 0 for x in self[:self.DEPTH])
+        return bool(self[0] or self.longer_than_eq(2))b
 
     def __abs__(self):
         if self < 0: return -self
         else: return self
-
 
     def __trunc__(self): # round towards zero
         if self[0] >= 0: return self[0]

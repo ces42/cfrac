@@ -52,16 +52,16 @@ class CFrac(numbers.Real):
         :param x: a number or an iterable yielding the CF terms
         """
         self._cached = 0
-        self._terms = []
+        self._terms = [None]
 
         if isinstance(x, numbers.Real):
             self._gen = euclid_factors(x, 1)
-            self._more_terms()
+            self._terms[0] = next(self._gen)
 
         elif isinstance(x, collections.Iterable):
             self._gen = iter(x)
             try:
-                self._more_terms()
+                self._terms[0] = next(self._gen)
             except StopIteration:
                 raise ValueError('iterable cannot be empty')
 
@@ -135,7 +135,7 @@ class CFrac(numbers.Real):
         for coeff in self[1:self.DEPTH]:
             A, A_ = coeff * A + A_, A
             B, B_ = coeff * B + B_, B
-        return A / B
+        return float(A / B)
 
     def __bool__(self):
         return bool(self[0] or self.longer_than_eq(2))

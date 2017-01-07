@@ -115,6 +115,9 @@ class CFrac(numbers.Real):
         for _ in range(n):
             # next(self._gen) should already be integral (e. g. 2.0)
             term = int( next(self._gen) )
+            if term <= 0:
+                raise ValueError("continued fraction coefficients must be "
+                                 "positive")
             self._terms.append(term)
         self._cached += n
 

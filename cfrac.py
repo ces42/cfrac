@@ -176,7 +176,7 @@ class CFrac(numbers.Real):
         if isinstance(other, CFrac):
             return all(x == y for x, y in zip(self[:self.DEPTH], other[:self.DEPTH]))
         elif isinstance(object, numbers.Real):
-            return bool(self - other)
+            return abs(self - other) < 10**(-self.DEPTH)
 
         else:
             return NotImplemented
@@ -192,7 +192,7 @@ class CFrac(numbers.Real):
                 elif next_self == math.inf:
                     return False
 
-            return False # keine unterschied in den ersten DEPTH Gliedern
+            return False # no difference in the first DEPTH coefficients
         else:
             return self - other < CFrac(0)
 

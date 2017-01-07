@@ -279,9 +279,6 @@ class CFrac(numbers.Real):
         q = other // self
         return other - q*self
 
-    def __pos__(self):
-        return self
-
     def to_frac(self, depth=DEPTH) -> Fraction:
         A, A_ = self[0], 1
         B, B_ = 1, 0

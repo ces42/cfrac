@@ -45,7 +45,7 @@ class CFrac(numbers.Real):
     """
 
     # determines how many coefficients are compared by ==, <, >, etc.
-    DEPTH = 25
+    DEPTH = 32
 
     def __init__(self, x):
         """
@@ -310,7 +310,7 @@ class CFrac(numbers.Real):
                 return self
             factor = self ** (power // 2)
 
-            return factor * factor if power % 2 else factor * factor * self
+            return factor * factor if not power % 2 else factor * factor * self
         else:
             return NotImplemented
 
